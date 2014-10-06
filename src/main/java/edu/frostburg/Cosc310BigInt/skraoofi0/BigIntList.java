@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.compbox.fsu.cosc310.bigint;
+package edu.frostburg.Cosc310BigInt.skraoofi0;
 
 import java.nio.charset.Charset;
 import java.util.Collection;
@@ -32,7 +32,7 @@ public class BigIntList extends Number implements BigInt {
             .getName());
 
     private static final ListFactory factory = new ListFactory(
-            org.compbox.fsu.cosc310.linkedlist.LinkedList.class);
+            edu.frostburg.Cosc310BigInt.skraoofi0.LinkedList.class);
 
     public static final BigIntList ZERO = new BigIntList();
     public static final BigInt ONE = new BigIntList(1);

@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.compbox.fsu.cosc310.bigint;
+package edu.frostburg.Cosc310BigInt.skraoofi0;
 
+import edu.frostburg.Cosc310BigInt.skraoofi0.BigInt;
+import edu.frostburg.Cosc310BigInt.skraoofi0.BigIntList;
 import java.lang.reflect.Constructor;
 import java.math.BigInteger;
 import static org.junit.Assert.*;
