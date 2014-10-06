@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.compbox.fsu.cosc310.bigint;
+package edu.frostburg.Cosc310BigInt.skraoofi0;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
-import org.compbox.fsu.cosc310.linkedlist.LinkedList;
+import edu.frostburg.Cosc310BigInt.skraoofi0.LinkedList;
 
 /**
  * Convenience class for instantiating a List implementation.

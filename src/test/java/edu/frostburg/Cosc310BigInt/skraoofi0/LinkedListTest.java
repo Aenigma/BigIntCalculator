@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.compbox.fsu.cosc310.linkedlist;
+package edu.frostburg.Cosc310BigInt.skraoofi0;
 
+import edu.frostburg.Cosc310BigInt.skraoofi0.LinkedList;
 import com.google.common.collect.testing.ListTestSuiteBuilder;
 import com.google.common.collect.testing.TestStringListGenerator;
 import com.google.common.collect.testing.features.CollectionFeature;
