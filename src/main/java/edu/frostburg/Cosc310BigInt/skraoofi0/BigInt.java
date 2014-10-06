@@ -16,32 +16,63 @@
 package edu.frostburg.Cosc310BigInt.skraoofi0;
 
 /**
- *
+ * This interface defines the 
+ * 
  * @author Kevin Raoofi
  */
 public interface BigInt extends Comparable<BigInt> {
 
     /**
-     * 
+     *
      * @return BigInt representing the absolute value of the instance
      */
     BigInt abs();
 
     /**
-     * 
-     * @param o
-     * @return 
+     * Adds two numbers together
+     *
+     * @param o other BigInt object to add with
+     * @return the sum
      */
     BigInt add(BigInt o);
 
+    /**
+     * Multiplies two big integer values together
+     *
+     * @param bi other big integer
+     * @return the product
+     */
     BigInt multiply(BigInt bi);
 
+    /**
+     * Multiplies big integer with a regular int
+     *
+     * @param o integer to multiply this big integer with
+     * @return the product
+     */
     BigInt multiply(int o);
 
+    /**
+     * Returns this with its sign flipped
+     *
+     * @return this multiplied by -1
+     */
     BigInt negate();
 
+    /**
+     * Subtracts this with the given value
+     *
+     * @param o value to subtract this with
+     * @return the difference
+     */
     BigInt subtract(BigInt o);
-    
+
+    /**
+     * Determines whether the number is positive or not
+     *
+     * @return true if positive; false if negative. 0 should also return
+     * positive.
+     */
     boolean isPositive();
 
 }

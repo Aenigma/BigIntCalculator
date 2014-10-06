@@ -37,7 +37,7 @@ import java.util.NoSuchElementException;
  * </ol>
  *
  * @author Kevin Raoofi
- * @param <E>
+ * @param <E> the type for the elements being stored
  */
 public class LinkedList<E> extends AbstractSequentialList<E> {
 
@@ -79,7 +79,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
      * Constructor which creates a deep copy of {@code c} with a shallow copy of
      * its elements.
      *
-     * @param c
+     * @param c the collection to add into this
      */
     public LinkedList(Collection<E> c) {
         this();
@@ -162,7 +162,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> {
          * Constructor which traverses the list to the given index
          *
          * @param index the index of the value to be called by the subsequent
-         *              call to {@link #next()}.
+         * call to {@link #next()}.
          */
         public MainIter(int index) {
             verifyInsertable(index);

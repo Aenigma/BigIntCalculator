@@ -9,7 +9,6 @@ import java.io.*;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,7 +40,7 @@ public class Cosc310LLTester {
     }
 
     public void boringTest(String a, String b) {
-        Cosc310BigIntCalculator studentCalc = getCalc();
+        
 
         System.out.printf("Testing %s in boring-mode.%n", studentCalc);
         validateAddition(studentCalc, a, b);
@@ -52,7 +51,6 @@ public class Cosc310LLTester {
 
     public void testFromFile(String filename) throws IOException {
         List<String> lines = arrayFromFile(filename);
-        Cosc310BigIntCalculator studentCalc = getCalc();
         testFromLines(lines);
     }
 
@@ -90,7 +88,6 @@ public class Cosc310LLTester {
      * @param studC our calculator
      * @param a     first operand, in String form
      * @param b     second operand
-     * @return
      */
     protected void validateAddition(Cosc310BigIntCalculator studC, String a,
             String b) {
@@ -154,11 +151,6 @@ public class Cosc310LLTester {
             System.out.println("Do you think you can improve?");
         }
     }
-
-    public void bigIntTest() {
-        // maybe you could put in a way to test your big-int
-    }
-
     // test the linked list
     public void listTest1() {
         LinkedList<Integer> list = new LinkedList<>();

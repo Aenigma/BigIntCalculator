@@ -18,13 +18,14 @@ package edu.frostburg.Cosc310BigInt.skraoofi0;
 import edu.frostburg.cosc310.Cosc310BigIntCalculator;
 
 /**
+ * This acts as a facade for the manipulations done by the {@link BigIntList}
+ * class. It accepts two String representations of big integers for each
+ * operation, calculate the result, and return the string representation of the
+ * result.
  *
  * @author Kevin Raoofi
  */
 public class BigIntCalculator implements Cosc310BigIntCalculator {
-
-    public BigIntCalculator() {
-    }
 
     @Override
     public String add(String a, String b) {

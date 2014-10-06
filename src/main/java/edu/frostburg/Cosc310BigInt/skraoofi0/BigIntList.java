@@ -23,25 +23,52 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
+ * This is the BigInt implementation. It uses a regular Java List to do all data
+ * storage and can be made to work with standard Java collections. This allows
+ * the use of signed values and can add, subtract, or multiply. However, it
+ * cannot do division.
  *
- * @author kevin
+ * @author Kevin Raoofi
  */
 public class BigIntList extends Number implements BigInt {
 
     private static final Logger LOG = Logger.getLogger(BigIntList.class
             .getName());
 
+    /**
+     * Responsible for creating List implementation instances. You can switch
+     * this to using standard java collections
+     */
     private static final ListFactory factory = new ListFactory(
             edu.frostburg.Cosc310BigInt.skraoofi0.LinkedList.class);
 
+    /**
+     * Constant value for 0
+     */
     public static final BigIntList ZERO = new BigIntList();
+    /**
+     * Constant value for 1
+     */
     public static final BigInt ONE = new BigIntList(1);
+    /**
+     * Constant value for -1
+     */
     public static final BigInt NEGATIVE_ONE = new BigIntList(-1);
 
-    private static final int NUM_DIGITS_IN_MAX_INT = 11;
+    /**
+     * This is the charset used to decode a String to bytes. I need to assume
+     * ASCII as I'm doing arithmetic to convert from char to byte
+     */
     private static final Charset NUM_CHARSET = Charset.isSupported("US-ASCII") ? Charset
             .forName("US-ASCII") : Charset.defaultCharset();
 
+    /**
+     * Iterates through list and verifies that each element is within bounds.
+     *
+     * @param bl a list containing Byte objects
+     * @throws NumberFormatException if any of the bytes are 10 or above or less
+     * than 0 except for the first one which may be '-' or '+'
+     */
     static void checkList(final List<Byte> bl) throws NumberFormatException {
         int counter = -1;
         if (bl.get(0) == '-' || bl.get(0) == '+') {
@@ -58,13 +85,25 @@ public class BigIntList extends Number implements BigInt {
         }
     }
 
+    /**
+     * The backing collection of the object
+     */
     private final List<Byte> backing;
 
+    /**
+     * Constructor that initializes to 0. The preferred way to get 0 is to use
+     * the constant {@link #ZERO}.
+     */
     public BigIntList() {
         backing = factory.create();
         backing.add((byte) 0);
     }
 
+    /**
+     * Creates an object using the given value
+     *
+     * @param i the integer to convert
+     */
     public BigIntList(final int i) {
         if (i == 0) {
             backing = factory.create();
@@ -88,9 +127,11 @@ public class BigIntList extends Number implements BigInt {
     }
 
     /**
+     * Creates an object using a String.
      *
-     * @param s
-     * @throws NumberFormatException
+     * @param s string representation of object
+     * @throws NumberFormatException if the String contains values which are
+     * invalid
      */
     public BigIntList(final String s) throws NumberFormatException {
         final byte[] tmpBackingArr = s.getBytes(NUM_CHARSET);
@@ -113,9 +154,19 @@ public class BigIntList extends Number implements BigInt {
         backing = tmpBacking;
     }
 
+    /**
+     * Allows the use of a collection of bytes to initialize the object. You
+     * should note, however, that it is expected that each byte is within the
+     * bounds of 0 to 9, '-', or '+'. Rather than the case with
+     * {@link #BigIntList(java.lang.String)} where each byte represents the
+     * ASCII version of each digit.
+     *
+     * @param barr a collection of bytes
+     * @throws NumberFormatException throws an exception if values are invalid
+     */
     public BigIntList(final Collection<Byte> barr) throws NumberFormatException {
         if (barr.isEmpty()) {
-            backing = factory.create();
+            backing = ZERO.backing;
         } else {
             backing = factory.create(barr);
         }
@@ -127,7 +178,7 @@ public class BigIntList extends Number implements BigInt {
         BigIntList o = new BigIntList(other.toString());
 
         /*
-         * Prepare your anus; this method is ridiculous.
+         * Prepare yours; this method is ridiculous.
          *
          * You want recursion? We've got it. You want iterative? We've got it.
          */
@@ -270,7 +321,14 @@ public class BigIntList extends Number implements BigInt {
         return add(o.negate());
     }
 
-    BigIntList multiply_with_add(final BigInt bi) {
+    /**
+     * Legacy; utterly stupid to use in any scenario. It adds this value bi
+     * times to get the result.
+     *
+     * @param bi the instance to multiply with
+     * @return the product
+     */
+    private BigIntList multiply_with_add(final BigInt bi) {
         BigInt bia = new BigIntList(bi.toString());
         BigInt operand = bia.abs();
         BigIntList result = ZERO;
@@ -290,7 +348,7 @@ public class BigIntList extends Number implements BigInt {
         BigIntList bi = new BigIntList(o.toString());
 
         /*
-         * Prepare your anus; this method is ridiculous.
+         * Prepare yourself; this method is ridiculous.
          *
          * You want recursion? We've got it. You want iterative? We've got it.
          */
