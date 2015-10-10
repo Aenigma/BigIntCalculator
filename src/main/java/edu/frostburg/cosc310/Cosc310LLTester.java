@@ -7,6 +7,7 @@ package edu.frostburg.cosc310;
 import edu.frostburg.Cosc310BigInt.skraoofi0.LinkedList; // import your classes
 import java.io.*;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -79,7 +80,7 @@ public class Cosc310LLTester {
     }
 
     private List<String> arrayFromFile(String filename) throws IOException {
-        return Files.readAllLines(Paths.get(filename));
+        return Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
     }
 
     /**
